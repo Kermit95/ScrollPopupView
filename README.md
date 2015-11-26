@@ -12,3 +12,5 @@ compile 'com.kermit:scrollpopupview:1.0.0'
 - 如果使用了SwipeRefreshLayout，在创建ScrollPopupView前要为hasWrapper()传入true
 
 具体用法参见demo
+
+使用时发现严重BUG >_<
