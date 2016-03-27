@@ -3,6 +3,7 @@ package com.kermit.scrollpopupview;
 import android.app.Activity;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.ScrollView;
  * e-mail : wk19951231@163.com
  */
 public class ScrollPopupHelper {
+
+    private static final String TAG = "ScrollPopupHelper";
 
     private static final int SCROLL_TO_TOP = - 1;
 
@@ -117,9 +120,8 @@ public class ScrollPopupHelper {
         layoutParams.gravity = popupViewPosition == Position.BOTTOM ? Gravity.BOTTOM : Gravity.TOP;
         viewGroup.removeView(tempView);
         viewGroup.addView(container, index, params);
-        viewGroup.addView(tempView);
+        container.addView(tempView);
         container.addView(popupView, layoutParams);
-        viewGroup.invalidate();
     }
 
     private void onScrollPositionChanged(int oldPosition, int newPosition){
@@ -140,14 +142,16 @@ public class ScrollPopupHelper {
         popupView.animate()
                 .translationY(getTranslateY())
                 .setDuration(500);
+        Log.e(TAG, "translateScrollPopupView: delta Y: " + getTranslateY());
     }
 
     private int getTranslateY(){
 
         int translateY = 0;
         if (mPoppyViewHeight < 0){
-            mPoppyViewHeight = popupView.getHeight();
+            mPoppyViewHeight = popupView.getMeasuredHeight();
         }
+        Log.e(TAG, "getTranslateY: popupViewPosition: " + mPoppyViewHeight);
         switch (popupViewPosition){
             case BOTTOM:
                 translateY = mScrollDirection == SCROLL_TO_TOP ? mPoppyViewHeight : 0;

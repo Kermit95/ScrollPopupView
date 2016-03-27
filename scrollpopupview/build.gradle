@@ -1,44 +1,12 @@
 apply plugin: 'com.android.library'
 
-
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'scrollpopupview'
-
-    publishedGroupId = 'com.kermit'
-    artifact = 'scrollpopupview'
-
-    siteUrl = 'https://github.com/Kermit95/ScrollPopupView'
-    gitUrl = 'https://github.com/Kermit95/ScrollPopupView'
-
-    libraryVersion = '1.0.0'
-    libraryName = 'scrollpopupview'
-    libraryDescription = 'a view help with recyclerview and scollview.'
-
-
-    developerId = 'Kermit95'
-    developerName = 'Kermit95'
-    developerEmail = 'kermitwang95@gmail.com'
-
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-apply from:'https://raw.githubusercontent.com/Jude95/JCenter/master/install.gradle'
-apply from:'https://raw.githubusercontent.com/Jude95/JCenter/master/bintray.gradle'
-
-
-
-
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -54,6 +22,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
 }

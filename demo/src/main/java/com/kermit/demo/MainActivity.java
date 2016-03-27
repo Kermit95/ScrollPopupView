@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kermit.scrollpopupview.Position;
 import com.kermit.scrollpopupview.ScrollPopupHelper;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mRefreshLayout;
+    private Button mButtonHello;
 
     String[] data = new String[30];
 
@@ -53,7 +57,15 @@ public class MainActivity extends AppCompatActivity {
         mScrollPopupView = mScrollPopupHelper
                 .hasWrapper(true)
                 .createOnRecyclerView(mRecyclerView, R.layout.scrollpopupview);
-
+        mButtonHello = (Button) mScrollPopupView.findViewById(R.id.btn_say_hello);
+        mButtonHello.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(MainActivity.this, "Hello, World!", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        });
     }
 
 
